@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ANNI Agents Group — a fictional agency concept created for entertainment and creative storytelling.">
+  <title>ANNI Agents Group | Fictional Agency</title>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #121212;
+      --gold: #d7aa4b;
+      --gold-light: #ffe3a0;
+      --text: #f5f1e8;
+      --muted: #b9b2a4;
+      --line: rgba(215,170,75,.28);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--text); background: var(--bg);
+      font-family: Arial, Helvetica, sans-serif; line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, 92%); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px);
+      background: rgba(8,8,8,.9); border-bottom: 1px solid var(--line);
+    }
+    .nav { display:flex; justify-content:space-between; align-items:center; gap:20px; min-height:72px; }
+    .brand { font-weight:900; letter-spacing:2px; color:var(--gold-light); }
+    .brand span { display:block; font-size:.65rem; letter-spacing:4px; color:var(--muted); }
+    nav { display:flex; gap:22px; flex-wrap:wrap; font-size:.9rem; }
+    nav a:hover { color:var(--gold-light); }
+    .hero {
+      min-height: 78vh; display:grid; place-items:center; text-align:center; overflow:hidden;
+      background:
+        radial-gradient(ellipse at 50% 10%, rgba(215,170,75,.18), transparent 48%),
+        linear-gradient(180deg, rgba(0,0,0,.15), #080808),
+        repeating-linear-gradient(135deg, #0b0b0b 0, #0b0b0b 2px, #0d0d0d 2px, #0d0d0d 4px);
+      border-bottom:1px solid var(--line); padding:80px 0;
+    }
+    .crest { width:88px; height:88px; margin:0 auto 22px; border:2px solid var(--gold); border-radius:50%; display:grid; place-items:center; font-size:2.7rem; color:var(--gold-light); box-shadow:0 0 35px rgba(215,170,75,.15); }
+    .eyebrow { color:var(--gold); text-transform:uppercase; letter-spacing:5px; font-size:.76rem; font-weight:bold; }
+    h1 { margin:12px 0; font-family:Georgia, 'Times New Roman', serif; font-size:clamp(2.6rem, 7vw, 5.6rem); line-height:1.03; letter-spacing:2px; text-shadow:0 3px 25px #000; }
+    h1 span { color:var(--gold-light); }
+    .hero p { max-width:680px; margin:22px auto; color:var(--muted); font-size:1.05rem; }
+    .buttons { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:28px; }
+    .btn { display:inline-block; border:1px solid var(--gold); padding:12px 20px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; font-size:.8rem; transition:.2s; }
+    .btn.primary { color:#15110a; background:linear-gradient(135deg,var(--gold-light),var(--gold)); }
+    .btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(215,170,75,.15); }
+    section { padding:76px 0; }
+    .section-title { text-align:center; margin:0 0 12px; font-family:Georgia,serif; font-size:clamp(2rem,4vw,3rem); }
+    .section-title span { color:var(--gold-light); }
+    .section-intro { text-align:center; color:var(--muted); max-width:680px; margin:0 auto 38px; }
+    .about-grid { display:grid; grid-template-columns:1.2fr .8fr; gap:22px; }
+    .panel { background:linear-gradient(145deg,#151515,#0d0d0d); border:1px solid var(--line); padding:26px; border-radius:12px; }
+    .panel h3 { color:var(--gold-light); margin-top:0; font-family:Georgia,serif; font-size:1.4rem; }
+    .panel p, .panel li { color:var(--muted); }
+    .facts { display:grid; gap:12px; }
+    .fact { border-bottom:1px solid var(--line); padding:8px 0 14px; }
+    .fact:last-child { border:0; }
+    .fact small { display:block; color:var(--gold); text-transform:uppercase; letter-spacing:2px; }
+    .fact strong { font-size:1.05rem; }
+    .team-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    .agent-card { min-height:190px; padding:22px 18px; background:linear-gradient(160deg,#171717,#0c0c0c); border:1px solid var(--line); border-radius:10px; position:relative; overflow:hidden; }
+    .agent-card:before { content:""; position:absolute; width:100px; height:100px; right:-35px; top:-35px; border:1px solid rgba(215,170,75,.15); border-radius:50%; }
+    .agent-number { color:var(--gold); font-size:.75rem; letter-spacing:2px; }
+    .agent-card h3 { font-family:Georgia,serif; font-size:1.3rem; margin:13px 0 2px; }
+    .role { color:var(--gold-light); font-size:.78rem; text-transform:uppercase; letter-spacing:1.4px; }
+    .agent-card p { color:var(--muted); font-size:.88rem; margin-bottom:0; }
+    .notice { border-left:3px solid var(--gold); background:#111; padding:18px 22px; color:var(--muted); }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:stretch; }
+    .contact-line { margin:12px 0; color:var(--muted); }
+    .contact-line strong { color:var(--gold-light); }
+    footer { border-top:1px solid var(--line); padding:26px 0; text-align:center; color:#928b7e; font-size:.83rem; }
+    .disclaimer { color:#d4c5a2; font-size:.85rem; }
+    @media (max-width:800px) {
+      .about-grid,.contact-grid { grid-template-columns:1fr; }
+      .team-grid { grid-template-columns:repeat(2,1fr); }
+      .nav { padding:12px 0; align-items:flex-start; flex-direction:column; }
+      nav { gap:12px; }
+      .hero { min-height:68vh; }
+    }
+    @media (max-width:440px) {
+      .team-grid { grid-template-columns:1fr; }
+      nav { font-size:.82rem; }
+      section { padding:58px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home">ANNI AGENTS <span>GROUP</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a><a href="#team">Team</a><a href="#headquarters">Headquarters</a><a href="#disclaimer">Disclaimer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap">
+        <div class="crest" aria-hidden="true">♛</div>
+        <div class="eyebrow">Fictional Agency • Entertainment Project</div>
+        <h1>ANNI <span>AGENTS</span><br>GROUP</h1>
+        <p>A cinematic fictional agency concept built around teamwork, leadership, creativity, and storytelling. Welcome to the official fan-made agency profile.</p>
+        <div class="buttons">
+          <a class="btn primary" href="#team">Meet the Team</a>
+          <a class="btn" href="#about">Explore the Agency</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <h2 class="section-title">About <span>the Agency</span></h2>
+        <p class="section-intro">A made-up organisation for entertainment, role-play, and creative world-building—not a real security, police, or government agency.</p>
+        <div class="about-grid">
+          <article class="panel">
+            <h3>Our Story</h3>
+            <p>ANNI Agents Group is a fictional team imagined as a disciplined, tech-aware unit with a strong sense of loyalty and collaboration. Each member has a distinct role in the story, from leadership and coordination to software development.</p>
+            <p>Our visual identity combines a black-and-gold palette, a royal crest, and a cinematic city backdrop for a bold, premium look.</p>
+          </article>
+          <aside class="panel facts" id="headquarters">
+            <div class="fact"><small>Headquarters (fictional setting)</small><strong>Luhri Pul</strong></div>
+            <div class="fact"><small>Organisation type</small><strong>Fictional agency for entertainment</strong></div>
+            <div class="fact"><small>Core values</small><strong>Teamwork • Respect • Creativity</strong></div>
+            <div class="fact"><small>Visual theme</small><strong>Black • Gold • Cinematic</strong></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="wrap">
+        <h2 class="section-title">Meet the <span>Team</span></h2>
+        <p class="section-intro">Eight fictional team profiles. Titles are part of the creative concept and do not represent real-world authority.</p>
+        <div class="team-grid">
+          <article class="agent-card"><div class="agent-number">01 / LEADERSHIP</div><h3>Antriksh Thakur</h3><div class="role">Director</div><p>Leads the fictional agency's vision, identity, and creative direction.</p></article>
+          <article class="agent-card"><div class="agent-number">02 / LEADERSHIP</div><h3>Pranjal</h3><div class="role">General</div><p>Coordinates the team and helps keep the group's story moving.</p></article>
+          <article class="agent-card"><div class="agent-number">03 / LEADERSHIP</div><h3>Utkarsh</h3><div class="role">Lieutenant</div><p>Supports coordination, communication, and team planning in the fictional setting.</p></article>
+          <article class="agent-card"><div class="agent-number">04 / LEADERSHIP</div><h3>Ketan</h3><div class="role">Commander</div><p>Helps organise team roles and maintain a consistent group identity.</p></article>
+          <article class="agent-card"><div class="agent-number">05 / FIELD TEAM</div><h3>Ayush</h3><div class="role">Senior Soldier</div><p>A senior character in the agency's cinematic fictional universe.</p></article>
+          <article class="agent-card"><div class="agent-number">06 / FIELD TEAM</div><h3>Divyansh</h3><div class="role">Soldier</div><p>A team member featured in the agency's fictional action-story concept.</p></article>
+          <article class="agent-card"><div class="agent-number">07 / TECHNOLOGY</div><h3>Harsh</h3><div class="role">Software Developer</div><p>Builds fictional digital tools and supports the team's technology themes.</p></article>
+          <article class="agent-card"><div class="agent-number">08 / FIELD TEAM</div><h3>Mayank</h3><div class="role">Constable Agent</div><p>A character who helps connect the team's different roles in the story.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="disclaimer">
+      <div class="wrap">
+        <h2 class="section-title">Important <span>Notice</span></h2>
+        <div class="notice">
+          <p class="disclaimer"><strong>ANNI Agents Group is fictional and created for entertainment purposes only.</strong> It is not affiliated with any government department, police force, military, licensed security provider, or real agency. Names, ranks, and headquarters are used as part of a creative concept. This website does not offer real-world security services or claim official authority.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap contact-grid">
+        <div class="panel">
+          <h2 class="section-title" style="text-align:left">The <span>Mission</span></h2>
+          <p>Build a memorable fictional team identity through design, character profiles, and collaborative storytelling.</p>
+        </div>
+        <div class="panel">
+          <h3>Agency Profile</h3>
+          <p class="contact-line"><strong>Name:</strong> ANNI Agents Group</p>
+          <p class="contact-line"><strong>Fictional headquarters:</strong> Luhri Pul</p>
+          <p class="contact-line"><strong>Purpose:</strong> Entertainment and creative storytelling</p>
+          <p class="contact-line"><strong>Team size:</strong> 8 characters</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>© <span id="year"></span> ANNI Agents Group • Fictional entertainment project</div>
+      <div>Made for creative storytelling. Not an official organisation.</div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
